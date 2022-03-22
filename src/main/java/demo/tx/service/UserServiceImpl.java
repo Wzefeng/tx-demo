@@ -9,10 +9,13 @@ public class UserServiceImpl implements UserService {
     public void saveUser() {
         System.out.println("UserService#saveUser()");
 
-        // doSave();
+        doSave();
 
-        UserService userService = IoCContainer.get(UserServiceImpl.class);
-        userService.doSave();
+//        UserService userService = IoCContainer.get(UserServiceImpl.class);
+//        if (userService == null) {
+//            userService = IoCContainer.get(UserService.class);
+//        }
+//        userService.doSave();
     }
 
     @Override

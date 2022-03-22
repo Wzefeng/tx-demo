@@ -7,7 +7,7 @@ public class IoCContainer {
 
     private static final Map<Class<?>, Object> CONTAINER = new HashMap<>();
 
-    public static <T> void put(Class<? extends T> classType, T instance) {
+    public static <C, O extends C> void put(Class<C> classType, O instance) {
         CONTAINER.put(classType, instance);
     }
 

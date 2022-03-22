@@ -16,7 +16,6 @@ public class ProxyFactory {
             // Jdk Proxy
             proxy = JdkProxyFactory.createProxy(targetProvider, targetInterface);
             IoCContainer.put(targetInterface, proxy);
-            IoCContainer.put(target.getClass(), proxy);
         } else {
             // Cglib Proxy
             T target = targetProvider.get();

@@ -7,21 +7,38 @@ import demo.tx.proxyfactory.ProxyFactory;
 import demo.tx.service.ProductService;
 import demo.tx.service.UserService;
 import demo.tx.service.UserServiceImpl;
+import demo.tx.staticproxy.ProductServiceStaticProxy;
+import demo.tx.staticproxy.UserServiceImplStaticProxy;
 
 public class Main {
 
     public static void main(String[] args) {
-        testJdkProxy();
+        // testStaticProxyByComposing();
 
-        testCglibProxy();
+        testStaticProxyByExtending();
 
-        testAutoProxy();
+        // testJdkProxy();
+
+        // testCglibProxy();
+
+        // testAutoProxy();
+    }
+
+    private static void testStaticProxyByComposing() {
+        UserServiceImpl target = new UserServiceImpl();
+        UserService userService = new UserServiceImplStaticProxy(target);
+        userService.saveUser();
+    }
+
+    private static void testStaticProxyByExtending() {
+        ProductService productService = new ProductServiceStaticProxy();
+        productService.saveProduct();
     }
 
     private static void testJdkProxy() {
         UserService userService = JdkProxyFactory.createProxy(UserServiceImpl::new, UserService.class);
 
-        IoCContainer.put(UserServiceImpl.class, userService);
+        IoCContainer.put(UserService.class, userService);
 
         userService.saveUser();
 

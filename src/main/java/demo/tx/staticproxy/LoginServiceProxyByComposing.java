@@ -12,11 +12,22 @@ public class LoginServiceProxyByComposing implements LoginService {
 
     @Override
     public void login() {
-        long start = new Date().getTime();
+        long start = System.currentTimeMillis();
 
         loginService.login();
 
-        long end = new Date().getTime();
+        long end = System.currentTimeMillis();
+
+        System.out.printf("登录耗时%d(ms)\n", end - start);
+    }
+
+    @Override
+    public void auth() {
+        long start = System.currentTimeMillis();
+
+        loginService.auth();
+
+        long end = System.currentTimeMillis();
 
         System.out.printf("登录耗时%d(ms)\n", end - start);
     }

@@ -4,4 +4,6 @@ public interface LoginService {
 
     void login();
 
+    void auth();
+
 }

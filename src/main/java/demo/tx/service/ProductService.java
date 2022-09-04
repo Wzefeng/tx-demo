@@ -8,10 +8,10 @@ public class ProductService {
     public void saveProduct() {
         System.out.println("ProductService#saveProduct()");
 
-        // doSave();
+        doSave();
 
-        ProductService productService = IoCContainer.get(ProductService.class);
-        productService.doSave();
+//        ProductService productService = IoCContainer.get(ProductService.class);
+//        productService.doSave();
     }
 
     @MyTransactional
